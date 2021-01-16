@@ -33,7 +33,7 @@ from libqtile.utils import guess_terminal
 
 
 mod = "mod1"
-terminal = "kitty"
+terminal = "urxvt"
 
 keys = [
     # Switch between windows in current stack pane
@@ -99,7 +99,7 @@ layouts = [
     # layout.Bsp(),
     # layout.Columns(),
     # layout.Matrix(),
-     layout.MonadTall(border_focus="A10000"),
+     layout.MonadTall(border_focus="5348EC"),
     # layout.MonadWide(),
     # layout.RatioTile(),
     # layout.Tile(),
@@ -129,11 +129,11 @@ screens = [
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                widget.TextBox("default config", name="default"),
-                widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
+                
+                
                 widget.Systray(),
                 widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
-                widget.QuickExit(),
+                
             ],
             24,
         ),
@@ -174,6 +174,10 @@ floating_layout = layout.Floating(float_rules=[
 ])
 auto_fullscreen = True
 focus_on_window_activation = "smart"
+
+def autostart():
+    lazy.spawn("picom")
+    lazy.spawm("nitrogen --restore")
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
 # string besides java UI toolkits; you can see several discussions on the
